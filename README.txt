@@ -1,7 +1,7 @@
 Number Translator
 README
 
-This program will translate any number less than 10 million into literary accurate words. The format has been design for use on checks where the cents are included at actual digits rather than their respective words.
+This program will translate any number less than 10 million into Literarily accurate words. The format has been design for use on checks where the cents are included at actual digits rather than their respective words.
 
 Example: 
 input 457393.03
