@@ -5,7 +5,6 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="numTranslator.NumberTranslatorController">
    <children>
       <Label alignment="CENTER" layoutX="17.0" layoutY="23.0" prefHeight="39.0" prefWidth="548.0" text="Number Translator 5000" textFill="#05f831">
@@ -13,7 +12,7 @@
             <Font name="Bauhaus 93" size="39.0" />
          </font>
       </Label>
-      <TextField fx:id="numberRaw" layoutX="226.0" layoutY="145.0" />
+      <TextField fx:id="numberRaw" layoutX="226.0" layoutY="145.0" onAction="#calculateButtonListener" />
       <Button fx:id="translateButton" layoutX="226.0" layoutY="207.0" mnemonicParsing="false" onAction="#calculateButtonListener" prefHeight="44.0" prefWidth="149.0" text="Translate" textFill="#1b03ee">
          <font>
             <Font size="23.0" />

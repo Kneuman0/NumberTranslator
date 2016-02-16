@@ -29,6 +29,7 @@ public class NumberTranslatorController {
 	
 	public void calculateButtonListener(){
 		userWarningLabel.setText("");
+		translatedNumberLetter.setText("");
 		String numberFixed = numberRaw.getText().replaceAll("[,_ ]", "");
 		try {
 			num = new NumberTranslator(Double.parseDouble(numberFixed), numberFixed);
@@ -36,8 +37,6 @@ public class NumberTranslatorController {
 			userWarningLabel.setText(String.format("'%s' is not a recognizable number", numberRaw.getText()));
 			return;
 		}
-		
-		
 		
 		if(num.getCorrectFormat()){
 			userWarningLabel.setText(String.format("%s is not a translatable entry. "
