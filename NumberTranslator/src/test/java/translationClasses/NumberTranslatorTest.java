@@ -7,12 +7,7 @@ import org.junit.Test;
 
 public class NumberTranslatorTest {
 
-	@Test
-	public void testForCorrectFormat() {
-		NumberTranslator num = new NumberTranslator("28392.4");
-		assertFalse(num.getCorrectFormat());
-	}
-	
+		
 	@Test
 	public void testPluralForCents(){
 		NumberTranslator num = new NumberTranslator("28392.4");
@@ -42,10 +37,26 @@ public class NumberTranslatorTest {
 		try {
 			NumberTranslator num = new NumberTranslator("343.003");
 			assertTrue(false);
-		} catch (NumberFormatException e) {
+		} catch (NumberFormatException | ThousandsPlaceException e) {
 			assertTrue(true);
 		}
 		
+	}
+	
+	@Test
+	public void testHyphenBetweenTens(){
+		NumberTranslator num = new NumberTranslator("343.00");
+		assertThat(num.getFormattedTranslatedNumber(), containsString("forty-three"));
+	}
+	
+	@Test
+	public void testNumberGreaterThanOrEqualto10Million(){
+		try {
+			NumberTranslator num = new NumberTranslator("10,000,000");
+			assertTrue(false);
+		} catch (NotTranslatableNumberException e) {
+			assertTrue(true);
+		} 
 	}
 
 }

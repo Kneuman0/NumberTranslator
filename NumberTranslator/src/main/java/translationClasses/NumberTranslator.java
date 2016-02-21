@@ -18,14 +18,20 @@ public class NumberTranslator {
 	String[] baseNumArray;
 	String centsNumber;
 
-	public NumberTranslator(String centsNumber) throws NumberFormatException{
+	public NumberTranslator(String rawNumber) throws NumberFormatException, 
+	ThousandsPlaceException, NotTranslatableNumberException{
 		
-		this.number = Double.parseDouble(centsNumber);
+		String numberFixed = rawNumber.replaceAll("[,_ ]", "");
+		
+		this.number = Double.parseDouble(numberFixed);
 		// format used to .split entered number into 4 partial numbers
 		standardForm = new DecimalFormat("0,000,000.00");
 		// format used to check the entered number for correct format
 		checkForm = new DecimalFormat("#.###");
-		this.centsNumber = centsNumber;
+		this.centsNumber = numberFixed;
+		
+		// Throws NotTranslatableNumberException if the whole number is not translatable
+		checkWholeNumberFormat();
 		
 		// splits the entered number into a 4 element array containing millions, 
 		// thousands, hundreds and cents respectively
@@ -44,7 +50,10 @@ public class NumberTranslator {
 		// handles partial numbers in the hundreds positions
 		hundred = new Hundreds(partialNumbersArray[2], baseNumArray);
 		// handles the partial number for cents
-		cent = new Cents(partialNumbersArray[3], centsNumber);
+		cent = new Cents(partialNumbersArray[3], numberFixed);
+		
+		//Throws ThousandPlaceException if cents are not translatable
+		cent.getCheckCentsFormat();
 		
 	}
 		
@@ -52,21 +61,16 @@ public class NumberTranslator {
 	 * User error catching method for use in GUI apps
 	 * @return
 	 */
-	public boolean getCorrectFormat() throws ThousandsPlaceException{
-		boolean formatBad = false;
-		
+	public void checkWholeNumberFormat() throws NotTranslatableNumberException{
 		String stringNumber = checkForm.format(number);
 		// splits entered number into a 2 element array (dollars and cents)
 		String[] numToken = stringNumber.split("[.]");
-		
 		// checks for cents format, size of number, non zero or negative and that 
 		//it is in fact a number
-		if (cent.getCheckCentsFormat() || numToken[0].length() >= 8 
-				|| number <= 0) {
-			formatBad = true;
+		if (numToken[0].length() >= 8  || number <= 0) {
+			
+			throw new NotTranslatableNumberException(centsNumber);
 		}
-		
-		return formatBad;
 	}
 
 	/**
@@ -79,7 +83,7 @@ public class NumberTranslator {
 		if(number < 1){
 			formattedTransNum = getNoCaps(cent.getCents() + " cent" + getPluralCents());
 		}else{
-			formattedTransNum = getNoCaps(getTranslatedNumber().trim().replace("- ", " ").
+			formattedTransNum = getNoCaps(getTranslatedNumber().trim().replaceAll("- ", " ").
 					replace("   ", " ").replace("  ", " ") + getPluralCents());
 		}
 		return formattedTransNum;

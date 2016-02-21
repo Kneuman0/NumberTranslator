@@ -1,6 +1,8 @@
 package numTranslator;
 
+import translationClasses.NotTranslatableNumberException;
 import translationClasses.NumberTranslator;
+import translationClasses.ThousandsPlaceException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -30,19 +32,19 @@ public class NumberTranslatorController {
 	public void calculateButtonListener(){
 		userWarningLabel.setText("");
 		translatedNumberLetter.setText("");
-		String numberFixed = numberRaw.getText().replaceAll("[,_ ]", "");
+		
 		try {
-			num = new NumberTranslator(numberFixed);
-		} catch (NumberFormatException e1) {
+			num = new NumberTranslator(numberRaw.getText());
+		} catch(NumberFormatException e1) {
 			userWarningLabel.setText(String.format("'%s' is not a recognizable number", numberRaw.getText()));
 			return;
+		} catch(ThousandsPlaceException e){
+			userWarningLabel.setText(e.getMessage());
+		} catch(NotTranslatableNumberException e2){
+			userWarningLabel.setText(e2.getMessage());
 		}
 		
-		if(num.getCorrectFormat()){
-			userWarningLabel.setText(String.format("%s is not a translatable entry. "
-					+ "Number must be greater than zero and less than 10 million", numberRaw.getText()));
-			return;
-		}
+		
 			
 		translatedNumberLetter.setText(num.getFormattedTranslatedNumber());
 //		numberRaw.setText("");
