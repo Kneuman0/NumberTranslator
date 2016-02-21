@@ -1,16 +1,11 @@
 package translationClasses;
 
 public class Cents {
-	int partialNumberInt;
-	String number;
-	String partialNumber;
-	String[] centsArray;
+	private int partialNumberInt;
+	private String[] centsArray;
 
-	public Cents(String partialNumber, String[] baseNumberArray, String num) {
+	public Cents(String partialNumber, String num) {
 		partialNumberInt = Integer.parseInt(partialNumber);
-		this.partialNumber = partialNumber;
-		// number entered by user
-		this.number = num;
 		// splits number entered by user into dollars and cents (two element array)
 		centsArray = num.split("[.]");
 	}
@@ -28,7 +23,7 @@ public class Cents {
 	 * than zero exists after the 100's place. True = fail
 	 * @return
 	 */
-	public boolean getCheckCentsFormat() {
+	public boolean getCheckCentsFormat() throws ThousandsPlaceException {
 		boolean falseFormat = false;
 		
 		String partialCents2 = "";
@@ -42,7 +37,11 @@ public class Cents {
 			if (centsArray[1].length() > 1) {
 				// deletes the first two characters in the cents string
 				partialCents2 = cents.deleteCharAt(0).deleteCharAt(0)
-						.toString();
+						.toString().replaceAll("[0]", "");
+			}
+			
+			if(partialCents2.length() != 0){
+				throw new ThousandsPlaceException();
 			}
 			// verifies that the following characters after the first two are all zeros
 			// if any character other than zero is found, method returns true

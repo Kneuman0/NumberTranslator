@@ -18,8 +18,9 @@ public class NumberTranslator {
 	String[] baseNumArray;
 	String centsNumber;
 
-	public NumberTranslator(double num, String centsNumber) {
-		this.number = num;
+	public NumberTranslator(String centsNumber) throws NumberFormatException{
+		
+		this.number = Double.parseDouble(centsNumber);
 		// format used to .split entered number into 4 partial numbers
 		standardForm = new DecimalFormat("0,000,000.00");
 		// format used to check the entered number for correct format
@@ -28,7 +29,7 @@ public class NumberTranslator {
 		
 		// splits the entered number into a 4 element array containing millions, 
 		// thousands, hundreds and cents respectively
-		partialNumbersArray = standardForm.format(num).split("[,.]");
+		partialNumbersArray = standardForm.format(this.number).split("[,.]");
 		
 		// array used throughout program for translation of numbers or 
 		// partial numbers 15 for less. Most other numbers are combinations of these
@@ -43,41 +44,16 @@ public class NumberTranslator {
 		// handles partial numbers in the hundreds positions
 		hundred = new Hundreds(partialNumbersArray[2], baseNumArray);
 		// handles the partial number for cents
-		cent = new Cents(partialNumbersArray[3], baseNumArray, centsNumber);
+		cent = new Cents(partialNumbersArray[3], centsNumber);
 		
 	}
-	
-	/**
-	 * Checks the entered string for correct format. Returns true if 
-	 * entered number does not meet the specifications presented to the user
-	 * @param doNotProceed
-	 * @return
-	 */
-	public boolean getCorrectFormat(boolean doNotProceed) {
-		boolean formatBad = false;
-
 		
-		String stringNumber = checkForm.format(number);
-		// splits entered number into a 2 element array (dollars and cents)
-		String[] numToken = stringNumber.split("[.]");
-		
-		// checks for cents format, size of number, non zero or negative and that 
-		//it is in fact a number
-		if (cent.getCheckCentsFormat() || numToken[0].length() >= 8 
-				|| number <= 0 || doNotProceed) {
-			formatBad = true;
-		}
-		
-		return formatBad;
-	}
-	
 	/**
 	 * User error catching method for use in GUI apps
 	 * @return
 	 */
-	public boolean getCorrectFormat() {
+	public boolean getCorrectFormat() throws ThousandsPlaceException{
 		boolean formatBad = false;
-
 		
 		String stringNumber = checkForm.format(number);
 		// splits entered number into a 2 element array (dollars and cents)

@@ -32,7 +32,7 @@ public class NumberTranslatorController {
 		translatedNumberLetter.setText("");
 		String numberFixed = numberRaw.getText().replaceAll("[,_ ]", "");
 		try {
-			num = new NumberTranslator(Double.parseDouble(numberFixed), numberFixed);
+			num = new NumberTranslator(numberFixed);
 		} catch (NumberFormatException e1) {
 			userWarningLabel.setText(String.format("'%s' is not a recognizable number", numberRaw.getText()));
 			return;
