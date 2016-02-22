@@ -25,19 +25,18 @@ public class NumberTranslatorTest {
 		
 		try {
 			NumberTranslator num = new NumberTranslator("343h");
-			assertTrue(false);
+			fail("Non number did not throw NumberFormatException");
 		} catch (NumberFormatException e) {
 			assertTrue(true);
 		}
-		
 	}
 	
 	@Test
 	public void testThousandsPlaceForCentsNotZero(){
 		try {
 			NumberTranslator num = new NumberTranslator("343.003");
-			assertTrue(false);
-		} catch (NumberFormatException | ThousandsPlaceException e) {
+			fail("ThousandsPlaceException not throws when .003 was passed in");
+		} catch (ThousandsPlaceException e) {
 			assertTrue(true);
 		}
 		
@@ -53,7 +52,7 @@ public class NumberTranslatorTest {
 	public void testNumberGreaterThanOrEqualto10Million(){
 		try {
 			NumberTranslator num = new NumberTranslator("10,000,000");
-			assertTrue(false);
+			fail("NotTranslatableNumberException not thrown when 10 million was passes in");
 		} catch (NotTranslatableNumberException e) {
 			assertTrue(true);
 		} 

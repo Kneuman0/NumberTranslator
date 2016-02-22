@@ -1,5 +1,6 @@
  package translationClasses;
 
+@SuppressWarnings("serial")
 public class NotTranslatableNumberException extends RuntimeException {
 	
 	public NotTranslatableNumberException(String number){
