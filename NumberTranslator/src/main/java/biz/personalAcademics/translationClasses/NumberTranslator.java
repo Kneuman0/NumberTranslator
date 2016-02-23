@@ -1,4 +1,4 @@
-package translationClasses;
+package biz.personalAcademics.translationClasses;
 
 import java.text.DecimalFormat;
 

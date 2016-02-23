@@ -2,12 +2,14 @@ package translationClasses;
 
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
+
 import org.junit.*;
 import org.junit.matchers.JUnitMatchers.*;
 import org.junit.Test;
-
 import org.hamcrest.Matcher;
 import org.junit.Test;
+
+import biz.personalAcademics.translationClasses.Cents;
 
 public class CentsTest {
 

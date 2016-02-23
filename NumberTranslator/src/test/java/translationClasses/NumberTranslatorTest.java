@@ -5,6 +5,8 @@ import static org.hamcrest.CoreMatchers.*;
 
 import org.junit.Test;
 
+import biz.personalAcademics.translationClasses.*;
+
 public class NumberTranslatorTest {
 
 		

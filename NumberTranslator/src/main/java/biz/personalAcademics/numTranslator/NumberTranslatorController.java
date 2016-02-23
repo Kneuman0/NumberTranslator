@@ -1,8 +1,6 @@
-package numTranslator;
+package biz.personalAcademics.numTranslator;
 
-import translationClasses.NotTranslatableNumberException;
-import translationClasses.NumberTranslator;
-import translationClasses.ThousandsPlaceException;
+import biz.personalAcademics.translationClasses.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;

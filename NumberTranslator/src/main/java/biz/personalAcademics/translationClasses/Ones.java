@@ -1,4 +1,4 @@
-package translationClasses;
+package biz.personalAcademics.translationClasses;
 
 public class Ones {
 	int partialNumberInt;

@@ -1,4 +1,4 @@
-package translationClasses;
+package biz.personalAcademics.translationClasses;
 
 @SuppressWarnings("serial")
 public class ThousandsPlaceException extends RuntimeException {

@@ -1,4 +1,4 @@
-package numTranslator;
+package biz.personalAcademics.numTranslator;
 
 import java.io.IOException;
 import javafx.application.Application;
