@@ -3,11 +3,13 @@ package biz.personalAcademics.translationClasses;
 public class Cents {
 	private int partialNumberInt;
 	private String[] centsArray;
+	private String number;
 
 	public Cents(String partialNumber, String num) throws ThousandsPlaceException {
 		partialNumberInt = Integer.parseInt(partialNumber);
 		// splits number entered by user into dollars and cents (two element array)
 		centsArray = num.split("[.]");
+		this.number = num;
 		
 		//Throws a ThousandsPlaceException if input is not translatable
 		getCheckCentsFormat();
@@ -42,7 +44,7 @@ public class Cents {
 			}
 			
 			if(partialCents2.length() != 0){
-				throw new ThousandsPlaceException();
+				throw new ThousandsPlaceException(this.number);
 			}
 			
 		}

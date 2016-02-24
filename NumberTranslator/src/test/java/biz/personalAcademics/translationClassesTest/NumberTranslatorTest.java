@@ -3,13 +3,18 @@ package biz.personalAcademics.translationClassesTest;
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 
+import org.hamcrest.core.StringContains;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import biz.personalAcademics.translationClasses.*;
 
 public class NumberTranslatorTest {
 
-		
+	@Rule
+	public ExpectedException invalidInput = ExpectedException.none();
+	
 	@Test
 	public void testPluralForCents(){
 		NumberTranslator num = new NumberTranslator("28392.4");
@@ -24,24 +29,15 @@ public class NumberTranslatorTest {
 	
 	@Test
 	public void testNonNumber(){
-		
-		try {
-			NumberTranslator num = new NumberTranslator("343h");
-			fail("Non number did not throw NumberFormatException");
-		} catch (NumberFormatException e) {
-			assertTrue(true);
-		}
+		invalidInput.expect(NumberFormatException.class);
+		NumberTranslator num = new NumberTranslator("343h");
 	}
 	
 	@Test
 	public void testThousandsPlaceForCentsNotZero(){
-		try {
-			NumberTranslator num = new NumberTranslator("343.003");
-			fail("ThousandsPlaceException not throws when .003 was passed in");
-		} catch (ThousandsPlaceException e) {
-			assertTrue(true);
-		}
-		
+		invalidInput.expect(ThousandsPlaceException.class);
+		invalidInput.expectMessage(StringContains.containsString("343.003"));
+		NumberTranslator num = new NumberTranslator("343.003");
 	}
 	
 	@Test
@@ -52,12 +48,9 @@ public class NumberTranslatorTest {
 	
 	@Test
 	public void testNumberGreaterThanOrEqualto10Million(){
-		try {
-			NumberTranslator num = new NumberTranslator("10,000,000");
-			fail("NotTranslatableNumberException not thrown when 10 million was passes in");
-		} catch (NotTranslatableNumberException e) {
-			assertTrue(true);
-		} 
+		invalidInput.expect(NotTranslatableNumberException.class);
+		invalidInput.expectMessage(StringContains.containsString("10000000"));
+		NumberTranslator num = new NumberTranslator("10,000,000");
 	}
 
 }
