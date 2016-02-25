@@ -2,8 +2,6 @@ package biz.personalAcademics.translationClassesTest;
 
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
-
-import org.hamcrest.core.StringContains;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -36,7 +34,7 @@ public class NumberTranslatorTest {
 	@Test
 	public void testThousandsPlaceForCentsNotZero(){
 		invalidInput.expect(ThousandsPlaceException.class);
-		invalidInput.expectMessage(StringContains.containsString("343.003"));
+		invalidInput.expectMessage(containsString("343.003"));
 		NumberTranslator num = new NumberTranslator("343.003");
 	}
 	
@@ -49,7 +47,7 @@ public class NumberTranslatorTest {
 	@Test
 	public void testNumberGreaterThanOrEqualto10Million(){
 		invalidInput.expect(NotTranslatableNumberException.class);
-		invalidInput.expectMessage(StringContains.containsString("10000000"));
+		invalidInput.expectMessage(containsString("10000000"));
 		NumberTranslator num = new NumberTranslator("10,000,000");
 	}
 

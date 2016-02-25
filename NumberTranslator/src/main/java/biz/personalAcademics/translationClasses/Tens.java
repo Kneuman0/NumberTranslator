@@ -1,13 +1,11 @@
 package biz.personalAcademics.translationClasses;
 
 public class Tens {
-	int partialNumberInt;
-	String partialNumber;
-	Ones onesForTens;
-	String[] baseNumberArray;
+	private String partialNumber;
+	private Ones onesForTens;
+	private String[] baseNumberArray;
 
 	public Tens(String partialNumber, String[] baseNumberArray) {
-		partialNumberInt = Integer.parseInt(partialNumber);
 		this.partialNumber = partialNumber;
 		this.baseNumberArray = baseNumberArray;
 		onesForTens = new Ones(partialNumber, baseNumberArray);
@@ -18,7 +16,7 @@ public class Tens {
 	 * Translates numbers in the tens position
 	 * @return
 	 */
-	public String getTens() {
+	protected String getTens() {
 		// stores the number in the 2nd and 3rd position of partial number (ones and tens)
 		int twoDigits = Integer.parseInt(partialNumber.substring(1, 3));
 		// stores the 2nd digit (tens)

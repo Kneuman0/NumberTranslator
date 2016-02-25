@@ -1,19 +1,15 @@
 package biz.personalAcademics.translationClasses;
 
 public class Thousands {
-	int partialNumberInt;
-	String partialNumber;
-	Hundreds hundredsForThous;
-	String[] baseNumberArray;
+	private String partialNumber;
+	private Hundreds hundredsForThous;
 
 	public Thousands(String partialNumber, String[] baseNumArray) {
-		partialNumberInt = Integer.parseInt(partialNumber);
 		this.partialNumber = partialNumber;
 		
 		// passes the thousands partialNumber to hundreds for translation. Ensure there is
 		// no mis-translation between hundreds and thousands
 		hundredsForThous = new Hundreds(partialNumber, baseNumArray);
-		this.baseNumberArray = baseNumArray;
 	}
 
 	/**
@@ -21,7 +17,7 @@ public class Thousands {
 	 * the thousands position.
 	 * @return
 	 */
-	public String getThousands() {
+	protected String getThousands() {
 		int thousInt = Integer.parseInt(partialNumber);
 		String thousand = " ";
 

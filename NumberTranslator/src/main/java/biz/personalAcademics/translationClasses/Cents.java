@@ -18,7 +18,7 @@ public class Cents {
  * Returns cents *100 yielding a whole number
  * @return
  */
-	public int getCents() {
+	protected int getCents() {
 		// returns int value passed to class constructor
 		return partialNumberInt;
 	}
@@ -28,7 +28,7 @@ public class Cents {
 	 * than zero exists after the 100's place. True = fail
 	 * @return
 	 */
-	public void getCheckCentsFormat() throws ThousandsPlaceException {
+	protected void getCheckCentsFormat() throws ThousandsPlaceException {
 		String partialCents2 = "";
 		
 		// checks if any cents are present in entered number

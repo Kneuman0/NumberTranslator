@@ -1,13 +1,11 @@
 package biz.personalAcademics.translationClasses;
 
 public class Hundreds {
-	int partialNumberInt;
-	String partialNumber;
-	Tens tensForHund;
-	String[] baseNumberArray;
+	private String partialNumber;
+	private Tens tensForHund;
+	private String[] baseNumberArray;
 
 	public Hundreds(String partialNumber, String[] baseNumberArray) {
-		partialNumberInt = Integer.parseInt(partialNumber);
 		this.partialNumber = partialNumber;
 		
 		// passes the partial number used for hundreds to tens
@@ -21,7 +19,7 @@ public class Hundreds {
 	 * 
 	 * @return
 	 */
-	public String getHundreds() {
+	protected String getHundreds() {
 		int hundredsPosition = Integer.parseInt(Character
 				.toString(partialNumber.charAt(0)));
 		String hundreds = " ";

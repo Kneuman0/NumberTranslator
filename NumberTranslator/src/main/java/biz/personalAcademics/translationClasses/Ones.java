@@ -1,13 +1,10 @@
 package biz.personalAcademics.translationClasses;
 
 public class Ones {
-	int partialNumberInt;
-	String partialNumber;
-	String[] baseNumberArray;
+	private String partialNumber;
+	private String[] baseNumberArray;
 
 	public Ones(String partialNumber, String[] baseNumberArray) {
-		// partial number in int form
-		partialNumberInt = Integer.parseInt(partialNumber);
 		// distributed partial number 3 digits long padded with 0's if necessary
 		this.partialNumber = partialNumber;
 		this.baseNumberArray = baseNumberArray;
@@ -19,7 +16,7 @@ public class Ones {
 	 * 
 	 * @return
 	 */
-	public String getOnes() {
+	protected String getOnes() {
 
 		// picks number in the third position of the partial number and uses it
 		// as an
@@ -41,7 +38,7 @@ public class Ones {
 	 * @param index
 	 * @return
 	 */
-	public String getOnes(String index) {
+	protected String getOnes(String index) {
 		String ones = "";
 		// Stores a 3 digit number. Anticipated usage: numbers <= to 15
 		int allOnes = Integer.parseInt(index);

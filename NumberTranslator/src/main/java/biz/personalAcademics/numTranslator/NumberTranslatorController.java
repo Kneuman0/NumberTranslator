@@ -24,7 +24,7 @@ public class NumberTranslatorController {
 	NumberTranslator num;
 	
 	public void initialize(){
-		
+		// Deliberately left blank
 	}
 	
 	public void calculateButtonListener(){
