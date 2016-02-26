@@ -2,6 +2,7 @@ package biz.personalAcademics.translationClassesTest;
 
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -25,12 +26,14 @@ public class NumberTranslatorTest {
 		assertThat(num.getFormattedTranslatedNumber(), endsWith("t"));
 	}
 	
+	@SuppressWarnings("unused")
 	@Test
 	public void testNonNumber(){
 		invalidInput.expect(NumberFormatException.class);
 		NumberTranslator num = new NumberTranslator("343h");
 	}
 	
+	@SuppressWarnings("unused")
 	@Test
 	public void testThousandsPlaceForCentsNotZero(){
 		invalidInput.expect(ThousandsPlaceException.class);
@@ -44,6 +47,7 @@ public class NumberTranslatorTest {
 		assertThat(num.getFormattedTranslatedNumber(), containsString("forty-three"));
 	}
 	
+	@SuppressWarnings("unused")
 	@Test
 	public void testNumberGreaterThanOrEqualto10Million(){
 		invalidInput.expect(NotTranslatableNumberException.class);
