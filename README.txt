@@ -1,7 +1,7 @@
 Number Translator
 README
 
-Fully functioning stading alone program (once exported to a runnable .jar file). This program will translate any number less than 10 million into literarily accurate words. The format has been designed for use on checks where the cents are included as actual digits rather than their respective words.
+Fully functioning standing alone program (once exported to a runnable .jar file). This program will translate any number less than 10 million into literarily accurate words. The format has been designed for use on checks where the cents are included as actual digits rather than their respective words.
 
 Example: 
 input 457393.03
