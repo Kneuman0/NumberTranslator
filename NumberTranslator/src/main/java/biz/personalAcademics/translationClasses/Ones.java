@@ -1,13 +1,10 @@
 package biz.personalAcademics.translationClasses;
 
-public class Ones {
-	private String partialNumber;
-	private String[] baseNumberArray;
+public class Ones extends Number{
 
-	public Ones(String partialNumber, String[] baseNumberArray) {
+	public Ones(String partialNumber) {
 		// distributed partial number 3 digits long padded with 0's if necessary
-		this.partialNumber = partialNumber;
-		this.baseNumberArray = baseNumberArray;
+		super.partialNumber = partialNumber;
 	}
 
 	/**
@@ -25,7 +22,7 @@ public class Ones {
 				.charAt(2)));
 		String ones = "";
 		if (numOnes != 0) {
-			ones = baseNumberArray[numOnes];
+			ones = super.baseNumArray[numOnes];
 		}
 
 		return ones;
@@ -50,11 +47,11 @@ public class Ones {
 
 		// Handles small numbers (numbers <=15)
 		if (allOnes <= 15) {
-			ones = baseNumberArray[allOnes];
+			ones = super.baseNumArray[allOnes];
 		} else {
 			// Supplements Tens class for numbers greater than 15. Only handles
 			// numbers 1 thru 9
-			ones = baseNumberArray[singleOnes];
+			ones = super.baseNumArray[singleOnes];
 		}
 		return ones;
 	}

@@ -13,7 +13,6 @@ public class NumberTranslator {
 	private Hundreds hundred;
 	private Cents cent;
 	private String[] partialNumbersArray;
-	private String[] baseNumArray;
 	private String centsNumber;
 
 	public NumberTranslator(String rawNumber) throws NumberFormatException, 
@@ -35,18 +34,13 @@ public class NumberTranslator {
 		// thousands, hundreds and cents respectively
 		partialNumbersArray = standardForm.format(this.number).split("[,.]");
 		
-		// array used throughout program for translation of numbers or 
-		// partial numbers 15 for less. Most other numbers are combinations of these
-		baseNumArray = new String[] { "", "One", "Two ", "Three", "Four",
-				"Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven",
-				"Twelve", "Thirteen", "fourteen", "fifteen" };
 		
 		// handles partial numbers in the millions position
-		million = new Millions(partialNumbersArray[0], baseNumArray);
+		million = new Millions(partialNumbersArray[0]);
 		// handles partial numbers in the thousands positions
-		thousand = new Thousands(partialNumbersArray[1], baseNumArray);
+		thousand = new Thousands(partialNumbersArray[1]);
 		// handles partial numbers in the hundreds positions
-		hundred = new Hundreds(partialNumbersArray[2], baseNumArray);
+		hundred = new Hundreds(partialNumbersArray[2]);
 		// handles the partial number for cents
 		cent = new Cents(partialNumbersArray[3], numberFixed);
 		

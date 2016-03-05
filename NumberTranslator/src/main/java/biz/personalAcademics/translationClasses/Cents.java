@@ -1,6 +1,6 @@
 package biz.personalAcademics.translationClasses;
 
-public class Cents {
+public class Cents{
 	private int partialNumberInt;
 	private String[] centsArray;
 	private String number;

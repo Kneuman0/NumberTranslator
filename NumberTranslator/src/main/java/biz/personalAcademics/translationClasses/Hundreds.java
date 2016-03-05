@@ -1,16 +1,13 @@
 package biz.personalAcademics.translationClasses;
 
-public class Hundreds {
-	private String partialNumber;
+public class Hundreds extends Number{
 	private Tens tensForHund;
-	private String[] baseNumberArray;
 
-	public Hundreds(String partialNumber, String[] baseNumberArray) {
-		this.partialNumber = partialNumber;
+	public Hundreds(String partialNumber) {
+		super.partialNumber = partialNumber;
 		
 		// passes the partial number used for hundreds to tens
-		tensForHund = new Tens(partialNumber, baseNumberArray);
-		this.baseNumberArray = baseNumberArray;
+		tensForHund = new Tens(partialNumber);
 	}
 
 	/**
@@ -29,7 +26,7 @@ public class Hundreds {
 		if (hundredsPosition > 0) {
 			// uses BaseNumberArray for first digit and called tens class 
 			// to finish the rest
-			hundreds = baseNumberArray[hundredsPosition] + " Hundred "
+			hundreds = super.baseNumArray[hundredsPosition] + " Hundred "
 					+ tensForHund.getTens();
 			// if there is no hundreds position, tens class it called out right
 		} else {

@@ -1,12 +1,9 @@
 package biz.personalAcademics.translationClasses;
 
-public class Millions {
-	private String partialNumber;
-	private String[] baseNumberArray;
+public class Millions extends Number{
 
-	public Millions (String partialNumber, String[] baseNumberArray){
-		this.partialNumber = partialNumber;
-		this.baseNumberArray = baseNumberArray;
+	public Millions (String partialNumber){
+		super.partialNumber = partialNumber;
 
 		}
 	
@@ -18,7 +15,7 @@ public class Millions {
 		
 		// ensures the number entered is in the millions
 		if(numMillion >= 1){
-		millions = baseNumberArray[numMillion] + " Million";
+		millions = super.baseNumArray[numMillion] + " Million";
 		}
 
 		return millions;

@@ -1,14 +1,11 @@
 package biz.personalAcademics.translationClasses;
 
-public class Tens {
-	private String partialNumber;
+public class Tens extends Number{
 	private Ones onesForTens;
-	private String[] baseNumberArray;
 
-	public Tens(String partialNumber, String[] baseNumberArray) {
-		this.partialNumber = partialNumber;
-		this.baseNumberArray = baseNumberArray;
-		onesForTens = new Ones(partialNumber, baseNumberArray);
+	public Tens(String partialNumber) {
+		super.partialNumber = partialNumber;
+		onesForTens = new Ones(partialNumber);
 
 	}
 
@@ -26,7 +23,7 @@ public class Tens {
 		
 		// handles numbers 1 thru 15
 		if (twoDigits <= 15 && twoDigits > 0) {
-			tens = baseNumberArray[twoDigits];
+			tens = super.baseNumArray[twoDigits];
 			// handles numbers 16 thru 99
 		} else if(twoDigits > 15){
 			// switches on the tens position of the number and calls the ones class to finish
@@ -49,7 +46,7 @@ public class Tens {
 				break;
 			default:
 				// uses baseNuberArray to all tens numbers that start with a number
-				tens = baseNumberArray[secondDigit] + "ty-"
+				tens = super.baseNumArray[secondDigit] + "ty-"
 						+ onesForTens.getOnes(partialNumber);
 
 			}
