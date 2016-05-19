@@ -6,8 +6,8 @@ public class Number {
 	
 	public Number(){
 		// array used throughout program for translation of numbers or 
-				// partial numbers 15 for less. Most other numbers are combinations of these
-				baseNumArray = new String[] { "", "One", "Two ", "Three", "Four",
+		// partial numbers 15 for less. Most other numbers are combinations of these
+		baseNumArray = new String[] { "", "One", "Two ", "Three", "Four",
 						"Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven",
 						"Twelve", "Thirteen", "fourteen", "fifteen" };
 	}

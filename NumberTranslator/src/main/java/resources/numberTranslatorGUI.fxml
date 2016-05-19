@@ -25,5 +25,6 @@
       </Label>
       <Label layoutX="195.0" layoutY="170.0" prefHeight="25.0" prefWidth="211.0" text="*Number must be less than 10,000,000" textFill="#0a0a0a" />
       <Label fx:id="userWarningLabel" alignment="CENTER" layoutX="65.0" layoutY="86.0" prefHeight="50.0" prefWidth="471.0" textFill="#f50505" wrapText="true" />
+      <Button fx:id="launchEllipButton" layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#lauchEllipsoidButtonListener" text="Launch Ellipsoid Calculator" />
    </children>
 </AnchorPane>
