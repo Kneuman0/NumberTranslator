@@ -25,6 +25,9 @@ public class NumberTranslatorController {
     private Button translateButton;
 
     @FXML
+    private Button lunchBulletButton;
+
+    @FXML
     private TextField numberRaw;
 
     @FXML
@@ -64,6 +67,23 @@ public class NumberTranslatorController {
 		Parent parent = null;
 		try {
 			parent = FXMLLoader.load(getClass().getResource("/resources/EllipsoidVolumeGUI.fxml"));
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		Scene scene = new Scene(parent);
+
+		// window title
+		stage.setTitle("Ellipsoid Calculator");
+		stage.setScene(scene);
+		stage.show();
+	}
+	
+	public void launchBulletButtonListener(){
+		Stage stage = new Stage();
+		Parent parent = null;
+		try {
+			parent = FXMLLoader.load(getClass().getResource("/resources/ProjectileGUI.fxml"));
 			
 		} catch (IOException e) {
 			e.printStackTrace();
