@@ -12,19 +12,19 @@
             <Font name="Bauhaus 93" size="39.0" />
          </font>
       </Label>
-      <TextField fx:id="numberRaw" layoutX="226.0" layoutY="145.0" onAction="#calculateButtonListener" />
-      <Button fx:id="translateButton" layoutX="226.0" layoutY="207.0" mnemonicParsing="false" onAction="#calculateButtonListener" prefHeight="44.0" prefWidth="149.0" text="Translate" textFill="#1b03ee">
+      <TextField fx:id="numberRaw" layoutX="226.0" layoutY="128.0" onAction="#calculateButtonListener" />
+      <Button fx:id="translateButton" layoutX="226.0" layoutY="188.0" mnemonicParsing="false" onAction="#calculateButtonListener" prefHeight="44.0" prefWidth="149.0" text="Translate" textFill="#1b03ee">
          <font>
             <Font size="23.0" />
          </font>
       </Button>
-      <Label fx:id="translatedNumberLetter" alignment="CENTER" contentDisplay="CENTER" layoutX="26.0" layoutY="285.0" prefHeight="107.0" prefWidth="546.0" textFill="#319005" wrapText="true" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="26.0">
+      <Label fx:id="translatedNumberLetter" alignment="CENTER" contentDisplay="CENTER" layoutX="26.0" layoutY="246.0" prefHeight="107.0" prefWidth="546.0" textFill="#319005" wrapText="true" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="26.0">
          <font>
             <Font name="Batang" size="25.0" />
          </font>
       </Label>
-      <Label layoutX="195.0" layoutY="170.0" prefHeight="25.0" prefWidth="211.0" text="*Number must be less than 10,000,000" textFill="#0a0a0a" />
-      <Label fx:id="userWarningLabel" alignment="CENTER" layoutX="65.0" layoutY="86.0" prefHeight="50.0" prefWidth="471.0" textFill="#f50505" wrapText="true" />
+      <Label layoutX="195.0" layoutY="153.0" prefHeight="25.0" prefWidth="211.0" text="*Number must be less than 10,000,000" textFill="#0a0a0a" />
+      <Label fx:id="userWarningLabel" alignment="CENTER" layoutX="65.0" layoutY="67.0" prefHeight="50.0" prefWidth="471.0" textFill="#f50505" wrapText="true" />
       <Button fx:id="launchEllipButton" layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#lauchEllipsoidButtonListener" text="Launch Ellipsoid Calculator" />
       <Button fx:id="lunchBulletButton" layoutX="462.0" layoutY="361.0" mnemonicParsing="false" onAction="#launchBulletButtonListener" text="Launch Bullet Finder" />
    </children>

@@ -2,7 +2,9 @@ package biz.personalAcademics.controllers;
 
 import java.text.DecimalFormat;
 
-import biz.personalAcademics.lib.pathClasses.PathGetter;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+
 import biz.personalAcademics.projectile.InvalidMeasureException;
 import biz.personalAcademics.projectile.MeasureTooBigException;
 import biz.personalAcademics.projectile.ProjectileCalcMain;
@@ -20,8 +22,6 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 
 public class ProjectileCalcController {
 
@@ -197,18 +197,18 @@ public class ProjectileCalcController {
     
     private void playSound(){
     	
-    	Media fart = null;
+    	Clip clip = null;
     	
 		try {
-			
-			fart = new Media(ProjectileCalcMain.class.getResource("/resources/TacobellEruption.mp3").toString());
+			clip = AudioSystem.getClip();
+			clip.open(AudioSystem.getAudioInputStream(ProjectileCalcController.class.getResourceAsStream(
+					"/resources/TacobellEruption.mp3")));
+			clip.start();
 						
 		} catch (Exception e) {
-			PathGetter path = new PathGetter(new ProjectileCalcMain());
-			fart = new Media(path.getFileAbsoluteSubfolderURIString() +	"TacobellEruption.mp3");
+			e.printStackTrace();
 		}
-    	MediaPlayer player = new MediaPlayer(fart);
-    	player.play();
+    	
     }
     
     
