@@ -10,13 +10,17 @@ import javafx.stage.Stage;
 public class NumberTranslatorMain extends Application {
 
 	public void start(Stage stage) {
+		FXMLLoader loader = null;
 		Parent parent = null;
 		try {
-			parent = FXMLLoader.load(getClass().getResource("/resources/numberTranslatorGUI.fxml"));
+			loader = new FXMLLoader(getClass().getResource("/resources/numberTranslatorGUI.fxml"));
+			parent = (Parent)loader.load();
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.out.println("error in parent declaration");
 		}
+		NumberTranslatorController control = (NumberTranslatorController)loader.getController();
+		control.setHostService(this.getHostServices());
 		Scene scene = new Scene(parent);
 
 		// window title

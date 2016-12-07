@@ -2,7 +2,9 @@ package biz.personalAcademics.numTranslator;
 
 import java.io.IOException;
 
+import biz.personalAcademics.controllers.ProjectileCalcController;
 import biz.personalAcademics.translationClasses.*;
+import javafx.application.HostServices;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -35,6 +37,7 @@ public class NumberTranslatorController {
 
 	
 	NumberTranslator num;
+	HostServices host;
 	
 	public void initialize(){
 		// Deliberately left blank
@@ -81,19 +84,28 @@ public class NumberTranslatorController {
 	
 	public void launchBulletButtonListener(){
 		Stage stage = new Stage();
+		FXMLLoader loader = null;
 		Parent parent = null;
 		try {
-			parent = FXMLLoader.load(getClass().getResource("/resources/ProjectileGUI.fxml"));
-			
-		} catch (IOException e) {
-			e.printStackTrace();
+			loader = new FXMLLoader(getClass().getResource("/resources/ProjectileGUI.fxml"));
+			parent = (Parent)loader.load();
+		} catch (IOException | NullPointerException e) {
+			System.out.println(parent);
+//			e.printStackTrace();
 		}
+		
+		ProjectileCalcController control = (ProjectileCalcController)loader.getController();
+		control.setApp(host);
 		Scene scene = new Scene(parent);
 
 		// window title
 		stage.setTitle("Ellipsoid Calculator");
 		stage.setScene(scene);
 		stage.show();
+	}
+	
+	public void setHostService(HostServices host){
+		this.host = host;
 	}
 
 }

@@ -1,5 +1,7 @@
 package biz.personalAcademics.controllers;
 
+import java.io.BufferedInputStream;
+import java.io.File;
 import java.text.DecimalFormat;
 
 import javax.sound.sampled.AudioSystem;
@@ -9,6 +11,7 @@ import biz.personalAcademics.projectile.InvalidMeasureException;
 import biz.personalAcademics.projectile.MeasureTooBigException;
 import biz.personalAcademics.projectile.ProjectileCalcMain;
 import biz.personalAcademics.projectile.ProjectileUtility;
+import javafx.application.HostServices;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -22,6 +25,9 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaException;
+import javafx.scene.media.MediaPlayer;
 
 public class ProjectileCalcController {
 
@@ -77,11 +83,11 @@ public class ProjectileCalcController {
     private AnchorPane anchorPane;
     
     DecimalFormat inches;
+    HostServices host;
     
     public void initialize(){
     	inches = new DecimalFormat("0.000");
     	setBackgroundImage();
-    	playSound();
     }
     
     
@@ -138,8 +144,12 @@ public class ProjectileCalcController {
     	// sets the label telling the user the height of the specified distance
     	answerLabel.setText(String.format("%.2f inches relative to zeroed distance", bulletHeight));
     	
-//    	playSound();
+    	playSound();
     	
+    }
+    
+    public void setApp(HostServices app){
+    	host = app;
     }
     
     private boolean ensureAllEntriesLogged(){
@@ -200,9 +210,24 @@ public class ProjectileCalcController {
     	Clip clip = null;
     	
 		try {
+//			File file = new File("/resources/TacobellEruptionn.mp3");
+//			String uri = host.getDocumentBase().replace("file:/", "file:///") + "resources/TacobellEruption.mp3";
+//			System.out.println(uri);
+//			
+//			Media song = null;
+//			try {
+//				song = new Media(uri);
+//			} catch (MediaException e) {
+//				uri = host.getDocumentBase().replace("file:/", "file:///")
+//						+ "src/main/java/resources/TacobellEruption.mp3";
+//				song = new Media(uri);
+//				e.printStackTrace();
+//			}
+//			MediaPlayer player = new MediaPlayer(song);
+//			player.play();
 			clip = AudioSystem.getClip();
-			clip.open(AudioSystem.getAudioInputStream(ProjectileCalcController.class.getResourceAsStream(
-					"/resources/TacobellEruption.mp3")));
+			clip.open(AudioSystem.getAudioInputStream(new BufferedInputStream(ProjectileCalcController.class.getResourceAsStream(
+					"/resources/TacobellEruption.mp3"))));
 			clip.start();
 						
 		} catch (Exception e) {
